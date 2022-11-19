@@ -1,3 +1,4 @@
+import requests, json
 """
 The sintaxis of the "./Credentials/credentials.csv" might change
 if you are using Linux, MAC OS or Windows.
@@ -17,7 +18,7 @@ credentials = open("./Credentials/credentials.csv","r")
 API_KEY=credentials.readline()
 SECRET_KEY=credentials.readline()
 BASE_URL='https://paper-api.alpaca.markets'
-ACCOUNT_URLS='{}/v2/account'.format(BASE_URL)
+ACCOUNT_URL='{}/v2/account'.format(BASE_URL)
 ORDERS_URL='{}/v2/orders'.format(BASE_URL)
 HEADERS={'APCA-API-KEY-ID':API_KEY, 'APCA-API-SECRET-KEY': SECRET_KEY}
 
@@ -25,3 +26,6 @@ credentials.close()
 
 
 # function to connect to the account
+def get_account():
+    request = requests.get(ACCOUNT_URL,headers=HEADERS)
+    return json.loads(request.content)
