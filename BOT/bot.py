@@ -36,17 +36,23 @@ Function to place an order into the broker using the API
 @param: symbol -> The company we want to buy
 @param: qty -> amount of units
 @param: side -> buy or sell
-@param: type -> limit or market entry
+@param: type -> limit (specific price) or market price
 @param: time_in_force -> moment to create the order
+@param: limit_price -> when it reaches that price it takes profit
+@param: stop_loss -> when it reaches that price it assumes a loss
 """
-def create_order(symbol,qty,side,type,time_in_force):
+def create_order(symbol,qty,side,type,time_in_force,limit_price,stop_loss):
     data = {
         "symbol": symbol,
         "qty": qty,
         "side": side,
         "type": type,
-        "time_in_force": time_in_force
+        "time_in_force": time_in_force,
+        "take_profit": {"limit_price": limit_price},
+        "stop_loss":{"stop_loss": stop_loss},
     }
+    request = requests.post(ORDERS_URL, json=data, headers=HEADERS)
+    return json.loads(request.content)
 
 
 # function to get all the orders made
