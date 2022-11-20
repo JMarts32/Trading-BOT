@@ -29,3 +29,29 @@ credentials.close()
 def get_account():
     request = requests.get(ACCOUNT_URL,headers=HEADERS)
     return json.loads(request.content)
+
+"""
+Function to place an order into the broker using the API
+
+@param: symbol -> The company we want to buy
+@param: qty -> amount of money
+@param: side -> buy or sell
+@param: type -> limit or market entry
+@param: time_in_force -> moment to create the order
+"""
+def create_order(symbol,qty,side,type,time_in_force):
+    data = {
+        "symbol": symbol,
+        "qty": qty,
+        "side": side,
+        "type": type,
+        "time_in_force": time_in_force
+    }
+
+
+# def get_order():
+
+# function to get all the orders made
+def get_orders():
+    request = requests.get(ORDERS_URL, headers=HEADERS)
+    return json.loads(request.content)
