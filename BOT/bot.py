@@ -1,4 +1,5 @@
 import requests, json
+import pandas as pd
 """
 The sintaxis of the "./Credentials/credentials.csv" might change
 if you are using Linux, MAC OS or Windows.
@@ -59,3 +60,27 @@ def create_order(symbol,qty,side,type,time_in_force,limit_price,stop_loss):
 def get_orders():
     request = requests.get(ORDERS_URL, headers=HEADERS)
     return json.loads(request.content)
+
+"""
+Function to get the information of the bars for the specific company's
+
+@param: temp -> temporality wanted to analyze
+@param: symbols -> The companies you wany to analyze
+@param: qty -> amount of bars you want to analyze
+"""
+def get_bars(temp,symbols,qty):
+    data = "{}/bars/{}?symbols={}&limit={}".format(BASE_URL,temp,symbols,qty)
+    request = requests.get(data, headers=HEADERS)
+    json_data = json.dumps(request.content,indent=4)
+    return json_data
+
+"""
+Function to convert the json information of the bars into a data frame
+to analyze with pandas
+
+@param: jsonBars -> the Json with the information
+@param: qty -> amount of bars that want to be analyzed
+"""
+def get_bars_dataFrame(jsonBars,qty):
+    dataFrame = pd.read_json(jsonBars)
+    return dataFrame.head(qty)
