@@ -1,5 +1,8 @@
 import requests, json
 import pandas as pd
+import alpha_vantage.timeseries as TimeSeries
+import alplha_vantage.techindicators as TechIndicators
+import matplotlib.pyplot as plt
 """
 The sintaxis of the "./Credentials/credentials.csv" might change
 if you are using Linux, MAC OS or Windows.
