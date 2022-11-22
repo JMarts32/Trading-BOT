@@ -1,7 +1,7 @@
 import requests, json
 import pandas as pd
 import alpha_vantage.timeseries as TimeSeries
-import alplha_vantage.techindicators as TechIndicators
+import alpha_vantage.techindicators as TechIndicators
 import matplotlib.pyplot as plt
 """
 The sintaxis of the "./Credentials/credentials.csv" might change
@@ -87,3 +87,4 @@ to analyze with pandas
 def get_bars_dataFrame(jsonBars,qty):
     dataFrame = pd.read_json(jsonBars)
     return dataFrame.head(qty)
+
