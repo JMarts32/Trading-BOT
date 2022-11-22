@@ -3,6 +3,8 @@ import pandas as pd
 import alpha_vantage.timeseries as TimeSeries
 import alpha_vantage.techindicators as TechIndicators
 import matplotlib.pyplot as plt
+
+# TODO: REMOVE ALL THE UNUSED IMPORTS
 """
 The sintaxis of the "./Credentials/credentials.csv" might change
 if you are using Linux, MAC OS or Windows.
