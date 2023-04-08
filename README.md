@@ -17,10 +17,7 @@ First you need to have installed pip in your computer, it comes with almast ever
     cmd + space
     type terminal
 
-    then run: 
-    "pip install pandas"
-    "pip install requests"
-
+then you type `pip` or `pip3` if you get a list of commands, means that you have pip and python
 If there is an error that says "pip is not a known command" try by typing "pip3" instead of "pip"
 
 
@@ -28,7 +25,7 @@ For the BOT to work you might install the requirements if they are not in your p
     
     pip install -r requirements.tx
 
-This commando will install everything automatically.
+This command will install everything automatically.
 
 ------------!IMPORTANT MESSAGE FOR JUAN MARTIN------------
 - The secret key changes if you start working on another pc. Remeber to regenerate it.
